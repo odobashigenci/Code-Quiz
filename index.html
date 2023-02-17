@@ -14,43 +14,53 @@
     <div class="container-fluid">
         <div class="row" id="row1">
             <div class="col-9">
-                <a href="highScores.html" id="highScore">High Score</a>
+                <a href="highscore.html" id="score">Score</a>
             </div>
-            <div class="col-3" id="timer">
-                <a>Time 50</a>
+            <div class="col-3">
+                <a  id="time">Time</a>
             </div>
         </div>
     </div>
 </header>
 
 <main>
-    <div class="container">
-        <div id="home" class="flex-center flex-column">
+    <div id="container">
+        <div class="flex-center flex-column">
             <h1>Code Quiz</h1>
-            <a class="btn">Play</a>
-            <a class="btn">High Score</a>
+            <a class="btn" id="play">Play</a>
+            <a href="highscore.html" class="btn" id="scoreBtn">High Score</a>
         </div>
     </div>
 
-    <div class="card-body">
-        <h3 class="card-title">Question here</h3>
+    <div class="card-body buttons hidden">
+        <h3 class="card-title" id="questions">Question here</h3>
         <div class="row">
-            <a href="#" class="btn" id="btn-a">Option A</a>
+            <a class="btn optionBtn" id="optionA">Option A</a>
         </div>
         <div class="row">
-            <a href="#" class="btn" id="btn-b">Option B</a>
+            <a class="btn optionBtn" id="optionB">Option B</a>
         </div>
         <div class="row">
-            <a href="#" class="btn" id="btn-c">Option C</a>
+            <a class="btn optionBtn" id="optionC">Option C</a>
         </div>
         <div class="row">
-            <a href="#" class="btn" id="btn-d">Option D</a>
+            <a class="btn optionBtn" id="optionD">Option D</a>
         </div>
         <div class="row last">
             <h3 class="" id="correctWrong">Correct/Wrong</h3>
         </div>
+        <div id="userData" class="hidden">
+            <form>
+                <span id="finalScore">Your score 0</span>
+                <input id="initials" type="text" placeholder="Initials">
+                
+                <button style="margin-top: 0.5rem;" class="btn submit">Submit</button>
+            </form>
+        </div>
     </div>
 </main>
+<script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
     <script src="Assets/index.js"></script>
+    <!-- <script src="highscore.js"></script> -->
 </body>
 </html>
