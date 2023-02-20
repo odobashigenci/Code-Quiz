@@ -126,8 +126,8 @@ var time = document.getElementById("time");
 var play = document.getElementById("play");
 var scoreBtn = document.getElementById("scoreBtn");
 var cardBody = document.querySelector(".card-body");
-var submitButton = document.querySelector(".submit");
-var yourInitials = document.getElementById("initials");
+
+
 var yourScore = document.getElementById("finalScore");
 var firstAnswer = document.getElementById("optionA");
 var secondAnswer = document.getElementById("optionB");
@@ -181,6 +181,7 @@ function renderQuestions() {
         timeLeft = timeLeft - 5;
       }
       // console.log(currentQuestion);
+      // questionAsked.push(currentQuestion++);
       currentQuestion++;
       if(currentQuestion < 10){
         renderQuestions();
@@ -216,12 +217,26 @@ play.addEventListener("click", startGame);
 
 
 
+// setting up local storage
 
+var submitButton = document.querySelector(".submit");
+var yourInitials = document.getElementById("initials");
 
+var highScore = JSON.parse(localStorage.getItem("score")) || [];
 
+submitButton.addEventListener("click", function(event){
+  event.stopPropagation();
+ 
 
+  var initials = yourInitials.value;
+  var score = {initials, timeLeft};
+ 
 
+  highScore.push(score);
+  localStorage.setItem("score", JSON.stringify(highScore));
+});
 
+// set up highscore.html page
 
 
 
@@ -285,20 +300,22 @@ play.addEventListener("click", startGame);
 
 
 
-// var highScore = JSON.parse(localStorage.getItem("finalScore")) || [];
 
-// submitButton.addEventListener("click", function (event) {
-//   event.stopPropagation();
-//   console.log("click");
 
-//   var initials = yourInitials.value;
-//   var finalScore = { initials, timeLeft };
-//   console.log("Final Score: " + finalScore);
-//   console.log(initials + " your score is: " + secondsLeft);
 
 
-//   highScore.push(finalScore);
-//   localStorage.setItem("finalScore", JSON.stringify(highScore));
 
-// });
+
+
+
+
+
+
+
+
+
+
+
+
+
 
