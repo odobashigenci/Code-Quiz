@@ -222,21 +222,29 @@ play.addEventListener("click", startGame);
 var submitButton = document.querySelector(".submit");
 var yourInitials = document.getElementById("initials");
 
+
+
 var highScore = JSON.parse(localStorage.getItem("score")) || [];
 
 submitButton.addEventListener("click", function(event){
   event.stopPropagation();
  
-
   var initials = yourInitials.value;
   var score = {initials, timeLeft};
  
+  if (yourInitials.value === "") {
+    alert("Please enter your initials!");
+    return;
+} 
 
   highScore.push(score);
   localStorage.setItem("score", JSON.stringify(highScore));
 });
 
-// set up highscore.html page
+
+
+
+
 
 
 
