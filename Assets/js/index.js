@@ -138,7 +138,7 @@ var correctWrong = document.getElementById("correctWrong");
 
 
 // sets up the coutndown time
-var timeLeft = 60;
+var timeLeft = 30;
 
 function startTime() {
   var timeInterval = setInterval(function () {
