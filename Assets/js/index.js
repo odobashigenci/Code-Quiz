@@ -101,19 +101,8 @@ function toggle() {
   var dots = document.getElementById("dots");
   var moreText = document.getElementById("readMore");
   var btnText = document.getElementById("myBtn");
-
-  if (dots.style.display === "none") {
-    dots.style.display = "inline";
-    btnText.innerHTML = "read more";
-    moreText.style.display = "none";
-  } else {
-    dots.style.display = "none";
-    btnText.innerHTML = "read less";
-    moreText.style.display = "inline";
-  }
 }
-
-// setting up the coutndown time, and ending the game.
+// sets up the coutndown time
 var timeLeft = 30;
 
 function startTime() {
@@ -188,9 +177,6 @@ function startGame() {
 }
 play.addEventListener("click", startGame);
 
-
-
-
 // Setting up local storage
 
 var submitButton = document.querySelector(".submit");
@@ -213,90 +199,3 @@ submitButton.addEventListener("click", function(event){
   highScore.push(score);
   localStorage.setItem("score", JSON.stringify(highScore));
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
