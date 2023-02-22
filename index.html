@@ -24,13 +24,21 @@
 </header>
 
 <main>
+    
     <div id="container">
         <div class="flex-center flex-column">
             <h1>Code Quiz</h1>
             <a class="btn" id="play">Play</a>
             <a href="highscore.html" class="btn" id="scoreBtn">High Score</a>
+            <div>
+                <p>Welcome! In this website you will have a chance to test your JavaScript skills.<span id="dots">..</span><span id="readMore"> This quiz will generate 10 random questions, and you have to choose between 4 options for each question. You have 30 seconds to answer all the questions. If your answer is correct, you will be rewarded +10 seconds on your timer. If your answer is wrong however, -10 seconds will be subtracted from your timer. After you have answered all the questions, the time left will be your final score. You can save it by entering your initials, or full name, and view it by clicking the High Score button. Good luck! </span><button
+                    class="hideText" onclick = "toggle()" id="myBtn">read more</button></p>
+            </div>
+            
         </div>
     </div>
+
+
 
     <div class="card-body buttons hidden">
         <h3 class="card-title" id="questions">Question here</h3>
@@ -61,6 +69,6 @@
 </main>
 <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
     <script src="Assets/js/index.js"></script>
-    <script src="Assets\js\highscore.js"></script>
+    <!-- <script src="Assets\js\highscore.js"></script> -->
 </body>
 </html>
