@@ -1,4 +1,4 @@
-
+// All the questions.
 var allQuestions = [{
   question: "Javascript is an _______ language?",
   options1: "Object-Oriented",
@@ -48,14 +48,6 @@ var allQuestions = [{
   correctAns: "const"
 },
 {
-  question: "What keyword is used to check whether a given property is valid or not?",
-  options1: "lies",
-  options2: "in",
-  options3: "exists",
-  options4: "is in",
-  correctAns: "in"
-},
-{
   question: "When an operator’s value is NULL, the typeof returned by the unary operator is:",
   options1: "Undefined",
   options2: "Integer",
@@ -78,56 +70,23 @@ var allQuestions = [{
   options3: "parse()",
   options4: "None of the above",
   correctAns: "stringify()"
+},
+{
+  question: "How to stop an interval timer in Javascript?",
+  options1: "intervalOver",
+  options2: "clearTimer",
+  options3:"clearInterval",
+  options4: "None of the above",
+  correctAns: "clearInterval"
 }
-// {
-//   question: "What will be the output of the following code snippet: print(typeof(NaN));",
-//   options1: "Object",
-//   options2: "Number",
-//   options3: "String",
-//   options4: "None of the above",
-//   correctAns: "Number"
-// },
-// {
-//   question: "Which of the following are closures in Javascript??",
-//   options1: "Functions",
-//   options2: "Variables",
-//   options3: "Objects",
-//   options4: "All of the above",
-//   correctAns: "All of the above"
-// },
-// {
-//   question: "Which of the following is not a Javascript framework?",
-//   options1: "Node",
-//   options2: "Vue",
-//   options3: "React",
-//   options4: "Cassandra",
-//   correctAns: "Cassandra"
-// },
-// {
-//   question: "How to stop an interval timer in Javascript?",
-//   options1: "intervalOver",
-//   options2: "clearTimer",
-//   options3:"clearInterval",
-//   options4: "None of the above",
-//   correctAns: "clearInterval"
-// },
-// {
-//   question: "How to stop an interval timer in Javascript?",
-//   options1: "intervalOver",
-//   options2: "clearTimer",
-//   options3: "clearInterval",
-//   options4: "None of the above",
-//   correctAns: "clearInterval"
-// }
 ]
 
+// Declared vars.
 var score = document.getElementById("score");
 var time = document.getElementById("time");
 var play = document.getElementById("play");
 var scoreBtn = document.getElementById("scoreBtn");
 var cardBody = document.querySelector(".card-body");
-
-
 var yourScore = document.getElementById("finalScore");
 var firstAnswer = document.getElementById("optionA");
 var secondAnswer = document.getElementById("optionB");
@@ -135,18 +94,32 @@ var thirdAnswer = document.getElementById("optionC");
 var fourthAnswer = document.getElementById("optionD");
 var questions = document.getElementById("questions");
 var correctWrong = document.getElementById("correctWrong");
+var optionsBtn = document.querySelectorAll('.optionBtn');
 
+// Setting up "read more" button on welcome text.
+function toggle() {
+  var dots = document.getElementById("dots");
+  var moreText = document.getElementById("readMore");
+  var btnText = document.getElementById("myBtn");
 
-// sets up the coutndown time
+  if (dots.style.display === "none") {
+    dots.style.display = "inline";
+    btnText.innerHTML = "read more";
+    moreText.style.display = "none";
+  } else {
+    dots.style.display = "none";
+    btnText.innerHTML = "read less";
+    moreText.style.display = "inline";
+  }
+}
+
 var timeLeft = 30;
 
 function startTime() {
   var timeInterval = setInterval(function () {
     timeLeft--;
-
     time.textContent = "Time " + timeLeft;
-
-    if (timeLeft === 0 || currentQuestion === 10) {
+    if (timeLeft === 0 || allQuestions.length === 0) {
       clearInterval(timeInterval);
       document.getElementById("userData").classList.remove("hidden");
       yourScore.textContent = "Your score is " + timeLeft;
@@ -154,10 +127,9 @@ function startTime() {
   }, 1000);
 }
 
-// generates all questions. populates the buttons with the anwers. moves to the next question. 
-var currentQuestion = 0;
-// Math.floor(Math.random() * allQuestions.length) => (if used math.floor to ranodmize the questions, some times will randomly stop rendering the desired amount of questions)
+var currentQuestion = Math.floor(Math.random() * allQuestions.length);
 
+// Generating all questions, populating the buttons with the anwers, and moving on to the next question.
 function renderQuestions() {
   var thisQuestion = allQuestions[currentQuestion];
   questions.textContent = thisQuestion.question;
@@ -165,32 +137,35 @@ function renderQuestions() {
   secondAnswer.textContent = thisQuestion.options2;
   thirdAnswer.textContent = thisQuestion.options3;
   fourthAnswer.textContent = thisQuestion.options4;
+  console.log(thisQuestion);
 }
  
-  var optionsBtn = document.querySelectorAll('.optionBtn')
-
+  
   for (var i = 0; i < optionsBtn.length; i++) {
     optionsBtn[i].addEventListener("click", function userAnswer(event){
       event.stopPropagation();
       if(event.currentTarget.textContent === allQuestions[currentQuestion].correctAns){
         correctWrong.textContent = "Correct";
-        timeLeft = timeLeft + 5;
-        console.log("Correct");
+        correctWrong.style.cssText = "color: green; font-weight: bold";
+        timeLeft = timeLeft + 10;
       } else{
         correctWrong.textContent = "Wrong";
-        timeLeft = timeLeft - 5;
+        correctWrong.style.cssText = "color: red; font-weight: bold";
+        timeLeft = timeLeft - 10;
       }
-      // console.log(currentQuestion);
-      // questionAsked.push(currentQuestion++);
-      currentQuestion++;
-      if(currentQuestion < 10){
+      allQuestions = allQuestions.filter(function (item){
+        return allQuestions[currentQuestion].question != item.question
+      })
+      console.log(allQuestions)
+      currentQuestion = Math.floor(Math.random() * allQuestions.length)
+
+      if(allQuestions.length > 0){
         renderQuestions();
       } 
-    });
-    
+    }); 
   }
 
-  // hides Play and High Score buttons on game start.
+  // Hiding Play and High Score buttons, and welcome text on game start.
 function hideContainer() {
 
   var container = document.getElementById("container");
@@ -202,26 +177,23 @@ function hideContainer() {
   }
 }
 
-// starts the game by clicking Play button.
+// Staring the game by clicking Play button.
 function startGame() {
 
   cardBody.classList.remove("hidden");
   startTime();
   renderQuestions();
   hideContainer();
-
 }
 play.addEventListener("click", startGame);
 
 
 
 
-
-// setting up local storage
+// Setting up local storage
 
 var submitButton = document.querySelector(".submit");
 var yourInitials = document.getElementById("initials");
-
 
 
 var highScore = JSON.parse(localStorage.getItem("score")) || [];
