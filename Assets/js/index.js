@@ -114,6 +114,7 @@ function toggle() {
 }
 
 // setting up the coutndown time, and ending the game.
+
 var timeLeft = 30;
 
 function startTime() {

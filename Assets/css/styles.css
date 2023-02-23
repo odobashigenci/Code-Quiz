@@ -76,6 +76,7 @@ a {
     padding: 5rem 0 0 10rem;
 }
 
+
 @media screen and (max-width: 400px) {
     .col-3, .col-9 {
         display: flex;
@@ -84,6 +85,7 @@ a {
         width: 100%;
     }
 }
+
 
 /* Read More button */
 #readMore {
@@ -96,12 +98,18 @@ p {
     font-size: 2rem;
     flex-wrap: wrap;
     justify-content: center;
+
     margin-left: 40rem;
     margin-right: 40rem;
+
+    margin: 0 40rem;
+
     padding: 1rem 0;
     text-align: center;
     text-decoration: none;
 }
+
+
 
 
 /* Content */
@@ -189,11 +197,13 @@ p {
     width: 15rem;
 }
 
+
 @media screen {
     #finalScore, #initials, .submit{
         margin-left: 5rem;
     }
 }
+
 
 /*Buttons*/
 .btn {
