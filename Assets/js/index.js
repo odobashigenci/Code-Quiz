@@ -101,8 +101,19 @@ function toggle() {
   var dots = document.getElementById("dots");
   var moreText = document.getElementById("readMore");
   var btnText = document.getElementById("myBtn");
+
+  if (dots.style.display === "none") {
+    dots.style.display = "inline";
+    btnText.innerHTML = "read more";
+    moreText.style.display = "none";
+  } else {
+    dots.style.display = "none";
+    btnText.innerHTML = "read less";
+    moreText.style.display = "inline";
+  }
 }
-// sets up the coutndown time
+
+// setting up the coutndown time, and ending the game.
 var timeLeft = 30;
 
 function startTime() {
@@ -176,6 +187,9 @@ function startGame() {
   hideContainer();
 }
 play.addEventListener("click", startGame);
+
+
+
 
 // Setting up local storage
 
